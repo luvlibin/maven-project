@@ -1,42 +1,42 @@
-pipeline{
-  agent any{
-     stages{
-		stage('SCM checkout'){
+pipeline {
+  agent any
+     stages {
+		stage ('SCM checkout'){
 		git 'https://github.com/luvlibin/maven-project.git'}
          
 
-		stage('source code compile'){
-		step{
-			withMaven(maven: 'MyMaven'){
+		stage ('source code compile'){
+		step {
+			withMaven(maven : 'MyMaven'){
 			sh 'mvn compile'
 		    }}
 		}
 
 
-		stage('Code Test'){
-		step{
-			withMaven(maven: 'MyMaven'){
+		stage ('Code Test'){
+		step {
+			withMaven(maven : 'MyMaven'){
 			sh 'mvn test'
 		    }}
 		}
 
-		stage('Package'){
-		step{
-			withMaven(maven: 'MyMaven'){
+		stage ('Package'){
+		step {
+			withMaven(maven : 'MyMaven'){
 			sh 'mvn package'
 		    }}
 		}
 
-		stage('install'){
-		step{
-			withMaven(maven: 'MyMaven'){
+		stage ('install'){
+		step {
+			withMaven(maven : 'MyMaven'){
 			sh 'mvn install'
 		    }}
 		}
 
-		stage('Deploy'){
-		step{
-			withMaven(maven: 'MyMaven'){
+		stage ('Deploy'){
+		step {
+			withMaven(maven : 'MyMaven'){
 			sh 'mvn deploy'
 		    }}
 		}
