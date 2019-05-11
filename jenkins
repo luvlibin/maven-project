@@ -2,11 +2,11 @@ pipeline {
   agent any
      stages {
 		stage ('SCM checkout'){
-		git 'https://github.com/luvlibin/maven-project.git'}
+		git 'https://github.com/luvlibin/maven-project'}
          
 
 		stage ('source code compile'){
-		step {
+		steps {
 			withMaven(maven : 'MyMaven'){
 			sh 'mvn compile'
 		    }}
@@ -14,30 +14,24 @@ pipeline {
 
 
 		stage ('Code Test'){
-		step {
+		steps {
 			withMaven(maven : 'MyMaven'){
 			sh 'mvn test'
 		    }}
 		}
 
 		stage ('Package'){
-		step {
+		steps {
 			withMaven(maven : 'MyMaven'){
 			sh 'mvn package'
 		    }}
 		}
 
 		stage ('install'){
-		step {
+		steps {
 			withMaven(maven : 'MyMaven'){
 			sh 'mvn install'
 		    }}
 		}
-
-		stage ('Deploy'){
-		step {
-			withMaven(maven : 'MyMaven'){
-			sh 'mvn deploy'
-		    }}
-		}
+	
 		}}
