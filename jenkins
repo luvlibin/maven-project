@@ -2,7 +2,7 @@ pipeline{
   any agent{
      stages{
 		stage('SCM checkout'){
-		git 'github url'}
+		git 'https://github.com/luvlibin/maven-project.git'}
          
 
 		stage('source code compile'){
