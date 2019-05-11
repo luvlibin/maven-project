@@ -34,5 +34,16 @@ pipeline {
 			sh 'mvn install'
 		    }}
 		}
-	        }
+		stage ('deploy to tomcat'){
+		steps {
+			sshagent(['f6092653-b8e8-4bc5-bb6d-2dd38d8c5aed']) {
+			sh ''
+		    }}
+		}
+		
+		}
+		}
+		
+		
+	        
 		
