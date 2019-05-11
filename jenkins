@@ -1,0 +1,42 @@
+pipeline{
+  any agent{
+     stages{
+		stage('SCM checkout'){
+		git 'github url'}
+         
+
+		stage('source code compile'){
+		step{
+			withMaven(maven: 'MyMaven'){
+			sh 'mvn compile'
+		    }}
+		}
+
+
+		stage('Code Test'){
+		step{
+			withMaven(maven: 'MyMaven'){
+			sh 'mvn test'
+		    }}
+		}
+
+		stage('Package'){
+		step{
+			withMaven(maven: 'MyMaven'){
+			sh 'mvn package'
+		    }}
+		}
+
+		stage('install'){
+		step{
+			withMaven(maven: 'MyMaven'){
+			sh 'mvn install'
+		    }}
+		}
+
+		stage('Deploy'){
+		step{
+			withMaven(maven: 'MyMaven'){
+			sh 'mvn deploy'
+		    }}
+		}
