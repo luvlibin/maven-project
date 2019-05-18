@@ -6,25 +6,10 @@ pipeline {
 		}
          }
 
-		stage ('source code compile'){
-		steps {
-			withMaven(maven : 'MyMaven'){
-			sh 'mvn compile'
-		    }}
-		}
-
-
 		stage ('Code Test'){
 		steps {
 			withMaven(maven : 'MyMaven'){
 			sh 'mvn test'
-		    }}
-		}
-
-		stage ('Package'){
-		steps {
-			withMaven(maven : 'MyMaven'){
-			sh 'mvn package'
 		    }}
 		}
 
